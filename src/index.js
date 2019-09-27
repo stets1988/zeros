@@ -50,7 +50,7 @@ fact_summ=1;
   		for(let m=2; m<=`${item}`;)
   			{
 		  		fact_summ*=m;
-		  		m=m=2;
+		  		m=m+2;
   		for (var k = 0; k<=fact_summ; k++)
     		{	
     			if(fact_summ%10==0)
