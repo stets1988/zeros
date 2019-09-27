@@ -1,18 +1,75 @@
 module.exports = function zeros(expression) {
-  	var fact_summ=1;
-  	var result=0;
-  	var length=expression.length;
-  	var fact=expression.slice(0,length-1);
-  	for(var i=1; i<=fact; i++)
-  	{ 
-  		fact_summ*=i;
+  	let fact_summ=1;
+  	let zero= 0;
+  	let count=0;
+  	let k=0;
+  	let p=0;
+  	let del=0;
+  	let check="";
+  	let arr2 = []; //считается через 2 числа
+  	let arr3 = []; //обычный факториал
+  	let arr5 = []; 
+  	let arr = expression.split('*');	
 
-  	}
-  	fact_summ_string=String(fact_summ);
-  	for(var j=0; j<fact_summ_string.length; j++)
+  	arr.forEach((item) => {
+  	k=`${item}`.length;
   	{
-  		if(fact_summ_string[j]==0)
-  			result+=1;
+  		check=`${item}`[k-1]+`${item}`[k-2];
+  		
   	}
-  	return result;
+  	// alert(check);
+  	if(check == "!!" )
+  		{
+  			p=`${item}`.slice(0, k-2);
+  			arr2.push(Number(p));
+  		}
+  	else
+  		{
+  			p=`${item}`.slice(0, k-1);
+  			arr3.push(Number(p)); 
+  		}
+});
+
+ 	arr2.forEach((item) => {
+  		if(`${item}`%2==0)
+  		{
+  		for(let m=2; m<=`${item}`;)
+  			{
+		  		fact_summ*=m;
+		  		m=m=2;
+		  		//alert(fact_summ);
+	  		
+			
+  		for (var k = 0; k<=fact_summ; k++)
+    		{	
+    			if(fact_summ%10==0)
+    			{
+    				count++;
+    				fact_summ/=10;
+    			}
+  			}
+  			}
+  		}
+  		else
+  		{
+  				for(let m=1; m<=`${item}`;m++)
+  			{
+		  		fact_summ*=m;
+		  		//alert(fact_summ);
+	  		
+			
+  		for (var k = 0; k<=fact_summ; k++)
+    		{	
+    			if(fact_summ%10==0)
+    			{
+    				count++;
+    				fact_summ/=10;
+    			}
+  			}
+  			}
+  		}
+fact_summ=1;
+});
+
+return count;	
 }
